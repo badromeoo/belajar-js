@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script type="module">
+// import { sayHello, sayBye, name } from './script/say.js';
+// import{ name as name2, name2 as name3  } from './script/variable.js';
+// import { company, sum, Company } from './script/multiple.js';
+// import {default as sayHelloDefault} from './script/say-helo.js';
+// import{default as nameDefault, name4} from './script/default-variable.js';
+// import { default as defaultClass} from './script/default-class.js';
+// import * as module_object from './script/module-object.js';
+import  {dataA,sayHelloDefault, defaultClass,
+    nameDefault, company, sum, Company, name,
+    name as name2, name2 as name3, name4,
+    sayHello, sayBye} from './script/aggregate.js';
+
+
+
+console.log(dataA.firstname);
+console.log(dataA.lastname);
+dataA.sayHello("bintang");
+const varModule_obeject = new dataA.Person("turah", "pletan");
+varModule_obeject.sayHello();
+varModule_obeject.sayBye();
+
+console.log(name4);
+const bintang = new defaultClass("bintang astawa");
+bintang.sayhi();
+console.log(nameDefault);
+sayHelloDefault('bintang');
+console.log(company);
+console.log(sum(8, 2));
+const a = new Company();
+console.log(a);
+
+console.log(name3);
+console.log(name2);
+sayHello(name);
+sayBye(name);
+
+    </script>
+</body>
+</html>
