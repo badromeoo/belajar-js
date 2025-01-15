@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute</title>
+</head>
+
+<body>
+    <img id="logo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+<script>
+
+const logo = document.getElementById("logo");
+// const src = logo.getAttributeNode("src");
+const src =logo.getAttribute("src");
+console.log(src);
+// console.log(src.value);
+</script>
+
+</body>
+</html>
