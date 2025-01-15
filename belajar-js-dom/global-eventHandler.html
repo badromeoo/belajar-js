@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event target</title>
+</head>
+<body>
+    
+<input type="button" id="clickMe" value="click me">
+
+<script>
+
+    const button = document.getElementById("clickMe");
+button.onclick = function() {
+    button.onclick = function() {
+        button.setAttribute("value", "sudah di klik");
+        console.log("button di klik");
+        };
+};
+
+        
+</script>
+
+
+</body>
+</html>
