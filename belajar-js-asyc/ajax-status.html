@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="response"></h1>
+    
+</body>
+<script>
+
+    // function showResponse(json){
+    //     const header =  document.getElementById("response");
+    //     header.textContent = json.qimak;
+    // }
+    // const ajax = new XMLHttpRequest();
+    
+    // ajax.onreadystatechange = function(){
+    //     console.log(`ready state change ${ajax.readyState}`);
+    // }
+    // ajax.open ("GET","api/hel.json");
+    // ajax.addEventListener("load", function(){
+    //     if(ajax.status === 200){
+    //         const json = JSON.parse(ajax.responseText);
+    //         showResponse(json);
+    //     }else{
+    //         showResponse(
+    //             {
+    //                 qimak: `Error ${ajax.status}`
+    //             }
+    //         );
+    //     }
+    
+    
+    // });
+    // ajax.addEventListener("readystatechange", function(){
+    //     console.log(`ready state change ${ajax.readyState}`);
+    
+        
+    // })
+    // ajax.send();
+
+//     const ajax = new XMLHttpRequest();
+
+// ajax.onreadystatechange = function() {
+//     ajax.addEventListener("readystatechange", function(){
+//         console.log(`ready state change ${ajax.readyState}`);});
+//     if (ajax.readyState === 4) { // Cek jika permintaan selesai
+//         if (ajax.status === 200) { // Cek jika respons berhasil
+//             const jsonResponse = JSON.parse(ajax.responseText);
+//             console.log(jsonResponse);
+//             showResponse(jsonResponse);
+//         } else {
+//             console.error("Error: " + ajax.status); // Menangani kesalahan
+//         }
+//     } else {
+//         console.log("Loading..."); // Menunjukkan bahwa permintaan masih berlangsung
+//     }
+// };
+
+// ajax.open("GET", "api/helo.json");
+// ajax.send();
+
+
+
+
+const ajax = new XMLHttpRequest();
+
+ajax.open("GET", "api/helo.json");
+ajax.send();
+
+ajax.onreadystatechange = function() {
+    if (ajax.readyState === 2) {
+        // Mengakses header respons
+        const contentType = ajax.getResponseHeader("Content-Type");
+        console.log("Content-Type:", contentType);
+    }
+
+    if (ajax.readyState === 4) {
+        // Permintaan selesai
+        if (ajax.status === 200) {
+            const response = JSON.parse(ajax.responseText);
+            console.log("Data:", response);
+        } else {
+            console.error("Error:", ajax.status);
+        }
+    }
+};
+
+</script>
+</html>
+
+
