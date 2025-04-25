@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Include jQuery from a CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1 id="promise"></h1>
+    <table id="productTable" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data produk akan ditambahkan di sini -->
+        </tbody>
+    </table>
+
+    <script>
+    function getProducts() {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: "api/product.json",
+                method: "GET",
+                success: function(data) {
+                    resolve(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    reject(`error: ${jqXHR.status}`);
+                    document.getElementById("promise").textContent = `error: ${jqXHR.status}`;
+                }
+            });
+        });
+    }
+
+    getProducts()
+    .then(function(products) {
+        document.getElementById("promise").textContent = "Data berhasil diambil";
+
+        // Mengisi tabel dengan data produk
+        const productTableBody = document.querySelector("#productTable tbody");
+        products.forEach(function(product) {
+            const row = document.createElement("tr");
+
+            // Tambahkan kolom ID
+            const idCell = document.createElement("td");
+            idCell.textContent = product.id;
+            row.appendChild(idCell);
+
+            // Tambahkan kolom Product
+            const productCell = document.createElement("td");
+            productCell.textContent = product.product;
+            row.appendChild(productCell);
+
+            // Tambahkan kolom Price
+            const priceCell = document.createElement("td");
+            priceCell.textContent = product.price;
+            row.appendChild(priceCell);
+
+            // Tambahkan baris ke tabel
+            productTableBody.appendChild(row);
+        });
+    })
+    .catch(function(error) {
+        console.error(error);
+    });
+    </script>
+</body>
+</html>
